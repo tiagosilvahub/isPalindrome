@@ -4,8 +4,8 @@ public class palindromeInteger {
                 new SolutionStrategy[]{
                         // Add strategies here
                         new mathOnlyStrategy(),
-                        new fastStrategy(),
-                        new easyToReadStrategy()
+                        new charArrayStrategy(),
+                        new stringBuilderReverseStrategy()
         };
         int[] input = {121, -121, 121212121, 1212321, 1111};
         boolean[] output = {true, false, true, false, true};
@@ -24,7 +24,7 @@ public class palindromeInteger {
                 }
             }
         }
-        printResults(errors, nTestCases);
+        printResults(errors, nTestCases * strategies.length);
     }
 
     private static void printResults(int errors, int nTestCases) {
@@ -33,45 +33,7 @@ public class palindromeInteger {
         } else {
             System.out.println(errors + " tests failed.");
             System.out.println(nTestCases - errors + " tests passed.");
-            System.out.println(nTestCases / errors + "% of tests passed.");
+            System.out.println((0.0 + nTestCases - errors) / nTestCases * 100  + "% of tests passed.");
         }
-    }
-
-}
-
-interface SolutionStrategy {
-    boolean isPalindrome(int x);
-}
-
-class easyToReadStrategy implements SolutionStrategy {
-    public boolean isPalindrome(int x) {
-        StringBuilder s = new StringBuilder(String.valueOf(x));
-        return s.toString().equals(s.reverse().toString());
-    }
-}
-
-class fastStrategy implements SolutionStrategy {
-    public boolean isPalindrome(int x) {
-        char[] c = String.valueOf(x).toCharArray();
-        for (int i = 0, j = c.length - 1; i < j; i++, j--) {
-            if (c[i] != c[j]) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-class mathOnlyStrategy implements SolutionStrategy {
-    public boolean isPalindrome(int x) {
-        if (x < 0 || (x != 0 && x % 10 == 0)) {
-            return false;
-        }
-        int reverse = 0;
-        while (x > reverse) {
-            reverse = reverse * 10 + x % 10;
-            x /= 10;
-        }
-        return x == reverse || x == reverse / 10;
     }
 }
