@@ -6,24 +6,36 @@ https://leetcode.com/problems/palindrome-number/
 Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 
 Example 1:
+
 Input: 121
+
 Output: true
 
 Example 2:
+
 Input: -121
+
 Output: false
+
 Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
 
 Example 3:
+
 Input: 10
+
 Output: false
+
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 First thoughts:
-0 is a palindrome.
-All negative integers are not.
-All numbers that end with a 0 are not (multiples of 10)
-If the number was a string, and if the reserved string is equal to the original, then the number is a palindrome.
+
+    - 0 is a palindrome.
+
+    - All negative integers are not.
+
+    - All numbers that end with a 0 are not (multiples of 10)
+
+    - If the number was a string, and if the reserved string is equal to the original, then the number is a palindrome.
 
 First solution, using StringBuilder reverse method:
 
